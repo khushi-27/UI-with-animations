@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/animation.dart';
 import 'package:flutter/material.dart';
+import 'package:practical_interview/below_text_widget.dart';
 
 final List<String> imgList = [
   'assets/images/1.jpg',
@@ -32,7 +33,7 @@ class _ScreenState extends State<Screen> with SingleTickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
-    Timer.periodic(const Duration(milliseconds: 1500), (Timer timer) {
+    Timer.periodic(const Duration(milliseconds: 1000), (Timer timer) {
       return setState(() {
         if (reverse == false) {
           if (_current == 2) {
@@ -189,55 +190,5 @@ class _ScreenState extends State<Screen> with SingleTickerProviderStateMixin {
         ]),
       ),
     ]);
-  }
-}
-
-class BelowTextWidget extends StatelessWidget {
-  const BelowTextWidget({
-    Key? key,
-    required this.text1,
-    required this.text2,
-  }) : super(key: key);
-
-  final String text1;
-  final String text2;
-
-  @override
-  Widget build(BuildContext context) {
-    return
-        //TweenAnimationBuilder(
-        // child:
-        Container(
-      padding: const EdgeInsets.fromLTRB(10.0, 50.0, 10.0, 0.0),
-      width: MediaQuery.of(context).size.width,
-      child: Column(
-        children: [
-          Text(
-            text1,
-            textAlign: TextAlign.center,
-            style: const TextStyle(
-              fontSize: 40.0,
-              fontWeight: FontWeight.bold,
-              letterSpacing: -0.5,
-            ),
-          ),
-          const SizedBox(height: 10.0),
-          Text(
-            text2,
-            textAlign: TextAlign.center,
-            style: TextStyle(color: Colors.grey[700], fontSize: 25.0),
-          ),
-        ],
-      ),
-    );
-    // tween: Tween<double>(begin: 25, end: 5),
-    // duration: const Duration(milliseconds: 500),
-    // builder: (BuildContext context, double _val, Widget? child) {
-    //   return Padding(
-    //     padding: EdgeInsets.fromLTRB(10.0, _val * 10, 10.0, 0.0),
-    //     child: child,
-    //   );
-    //},
-    // );
   }
 }
